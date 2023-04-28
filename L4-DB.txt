@@ -1,0 +1,59 @@
+create table student(
+ 
+stud_id number(3),
+ 
+student_name varchar2(20)
+);
+alter table student
+add age number(2);
+alter table student 
+drop column age;
+create table student(
+ 
+stud_id1 number(3),
+ 
+student_name1 varchar2(20)
+);
+alter table student
+modify stud_id1 varchar(10);
+alter table student 
+rename column student_name to S_name;
+desc student
+rename student to CSstudent;
+drop table CSstudent;
+create table student(
+ 
+stud_id number(3),
+ 
+student_name varchar2(20)
+);
+insert into student1 values(1,
+'noha'
+);
+insert into student1 values(2,
+'ahmad'
+);
+truncate table student;
+select *
+from student;
+alter table student
+add constraint pr_s primary key (stud_id);
+alter table student 
+add constraint u_s unique (student_name);
+add age number(2);
+alter table student 
+add constraint ch_s check(age>=18 and age <= 45);
+insert into student 
+values (4,
+'no',19);
+insert into student
+values (3,
+'ahm',20);
+desc student
+create table enrollmen (stud_id number (3),
+ course_id varchar2(4) );
+alter table enrollmen
+add constraint fk_s foreign key(stud_id) references to student(stud_id);
+alter table student
+drop constraint u_s;
+desc student

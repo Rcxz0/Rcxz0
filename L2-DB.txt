@@ -1,0 +1,43 @@
+create table Dept(
+DEPTNO number(2) ,DNAME varchar2(20)
+);
+create table Student(
+STDNO number (8), SNAME varchar2(30), depno1 number(2)
+
+);
+
+create table course( 
+    CORSNO number (3), CNAME varchar2(30), depno2 number(2), CMAX number(2)
+
+);
+
+create table enrolment(
+    STDNO2 number(8), CORSNO2 number(3), grade number(2), Edate date
+
+);
+
+
+alter table Dept add constraint pk_1 primary key (DEPTNO);
+alter table Student add constraint pk_2 primary key (STDNO);
+alter table course add constraint pk_3 primary key (CORSNO);
+alter table enrolment add constraint pk_4 primary key (CORSNO2,STDNO2);
+
+alter table Student add constraint fK_1 foreign key (depno1) references Dept(DEPTNO);
+alter table course add constraint fK_2 foreign key (depno2) references Dept(DEPTNO);
+alter table enrolment add constraint fK_3 foreign key (STDNO2) references Student(STDNO);
+alter table enrolment add constraint fK_4 foreign key (CORSNO2) references course(CORSNO);
+
+alter table student
+modify SNAME not null;
+
+alter table student
+modify depno1 not null;
+
+alter table enrolment 
+modify Edate default sysdate;
+
+
+desc dept;
+desc Student;
+desc course;
+desc enrolment;

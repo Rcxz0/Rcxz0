@@ -1,0 +1,14 @@
+create or replace procedure rental(staff propertyforrent.staffno%TYPE, rents PropertyForRent.rent%TYPE)
+as 
+cursor price is 
+select propertyNo,street,postcode,ptype,rooms,staffno
+from propertyforrent 
+where staff=staffNo and rents<rent;
+begin for rcurse in price loop dbms_output.put_line(rcurse.propertyNo ||' '|| rcurse.street|| ' ' || rcurse.postcode || ' '|| rcurse.ptype|| '  '|| 
+rcurse.rooms ||' '|| rcurse.staffno);
+
+end loop;
+end rental;
+select *
+from propertyforrent;
+exec rental('SG14',400);

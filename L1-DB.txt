@@ -1,0 +1,17 @@
+CREATE TABLE student( 
+
+student_ID number(7),
+
+student_name varchar2(20),
+
+address varchar2(10),
+
+yofj number(4),
+
+specialization varchar2(10),
+
+constraint ST_E primary key(student_ID));
+
+
+
+desc student

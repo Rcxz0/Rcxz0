@@ -1,0 +1,23 @@
+elect avg(unit_price) as AVG_Price from CO.Products; select max(unit_price) as MAX_price from CO.products desc CO.Products desc co.CUSTOMER_ORDER_PRODUCTS select sum(order_total) as TOTAL ,customer_id from co.CUSTOMER_ORDER_PRODUCTS group by customer_id select count(customer_id),order_status from co.CUSTOMER_ORDER_PRODUCTS group by order_status select count(distinct customer_id),order_status from co.CUSTOMER_ORDER_PRODUCTS group by order_status  having order_status='CANCELLED';
+
+
+select "CUSTOMER_ID", "EMAIL_ADDRESS","FULL_NAME"
+from CO."CUSTOMERS";
+
+select "ORDER_ID","ORDER_DATETIME","CUSTOMER_ID","ORDER_STATUS","STORE_ID"
+from CO."ORDERS";
+
+select "STORE_ID","STORE_NAME"
+from CO."STORES";
+
+select 
+CO."CUSTOMERS".CUSTOMER_ID,CO."CUSTOMERS".FULL_NAME, CO."ORDERS".ORDER_ID
+from CO."CUSTOMERS" 
+left outer join CO."ORDERS" on CO."ORDERS".CUSTOMER_ID= CO."CUSTOMERS".CUSTOMER_ID
+
+select STORE_NAME from CO."STORES" 
+where STORE_ID 
+in (select STORE_ID from CO."ORDERS" where ORDER_STATUS='REFUNDED')
+
+select * from CO."ORDERS" 
+where CUSTOMER_ID = (select CUSTOMER_ID from CO."CUSTOMERS" where FULL_NAME='Victor Morris')

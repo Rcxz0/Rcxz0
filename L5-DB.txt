@@ -1,0 +1,80 @@
+CREATE TABLE STUDENT(
+STDNO Number(8)Primary key,SNAME Varchar2(30) not null,DEPTNO Varchar2(2)
+);
+
+CREATE TABLE DEP(
+DEPTNO Varchar2(2) Primary key,DNAME Varchar2(20)
+);
+
+CREATE TABLE COURSE(
+CORSNO Number (3)Primary key,CNAME Varchar2 (30),DEPTNO Varchar2 (2),CMAX Number (2));
+
+
+CREATE TABLE ENROLMENT(
+STDNO Number (8), CORSNO Number (3),GRADE Number (2), EDATE DATE default sysdate ,Primary key (STDNO,CORSNO));
+
+
+ALTER TABLE STUDENT add CONSTRAINT s_fk FOREIGN KEY (DEPTNO)REFERENCES DEP (DEPTNO);
+
+
+ALTER TABLE COURSE add CONSTRAINT c_fk FOREIGN KEY (DEPTNO) REFERENCES DEP (DEPTNO);
+
+
+ALTER TABLE ENROLMENT add CONSTRAINT e_fk1 FOREIGN KEY (CORSNO) REFERENCES COURSE (CORSNO);
+
+
+ALTER TABLE ENROLMENT add CONSTRAINT e_fk2 FOREIGN KEY (STDNO) REFERENCES Student(STDNO);
+
+
+desc STUDENT;
+desc DEP;
+desc COURSE;
+desc ENROLMENT;
+
+
+insert into DEP values ('CP', 'Computer Programming');
+insert into DEP values ('CS', 'Computer Scientist');
+insert into DEP values ('CM', 'Chemistry');
+insert into DEP values ('MT', 'Math');
+insert into DEP values ('SC', 'Science');
+
+
+insert into STUDENT values(11,'Ali','CS');
+insert into STUDENT values(22,'Wafa','CM');
+insert into STUDENT values(33,'Ahmad','CP');
+insert into STUDENT values(44,'Nouha','CP');
+
+
+insert into COURSE values (301,'Chemistry I','CM',40);
+insert into COURSE values (101,'Introduction to DOS I','CP',30);
+insert into COURSE values (201,'Database','CS',30);
+insert into COURSE values (101,'Data structure','CP',25);
+
+
+insert into ENROLMENT values (11,301,80);
+insert into ENROLMENT values (22,101,88);
+insert into ENROLMENT values (33,201,67);
+insert into ENROLMENT values (44,401,95);
+
+
+
+SELECT * FROM Dep;
+
+
+select * from dep
+where DEPTNO='CS';
+
+
+select * from STUDENT;
+
+
+SELECT * FROM Student
+WHERE DEPTNO = 'CP'; 
+
+
+select * from dep
+where DNAME LIKE 'M%' OR DNAME LIKE 'C%';
+
+
+select * from Course
+ORDER BY CMAX desc;
