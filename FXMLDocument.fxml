@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="university.missing.FXMLDocumentController">
+   <children>
+      <ImageView fitHeight="485.0" fitWidth="777.0" layoutX="70.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@UOJ%20Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="262.0" layoutY="66.0" text="University missing" textFill="#5b617a">
+         <font>
+            <Font name="Arial Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <MenuBar fx:id="menu">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="add" mnemonicParsing="false" onAction="#adding" text="Add missing items" />
+                  <MenuItem fx:id="search" mnemonicParsing="false" onAction="#searching" text="Search for lost item" />
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="exit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
